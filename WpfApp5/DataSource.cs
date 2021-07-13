@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -8,27 +9,21 @@ using System.Windows.Threading;
 
 namespace WpfApp5
 {
-    class DataSource : INotifyPropertyChanged
+    class DataSource
     {
-        private int value = 0;
-        public int Value
+        ICollection<int> nonNotifiableColl = new List<int> { 1, 2, 3, 4 };
+        ICollection<int> notifiableColl = new ObservableCollection<int> { 1, 2, 3, 4 };
+
+        public IEnumerable<int> NonNotifiableColl => nonNotifiableColl;
+        public IEnumerable<int> NotifiableColl => notifiableColl;
+
+        public void AddValueNotify()
         {
-            get => value;
-            set
-            {
-                if (!this.value.Equals(value))
-                {
-                    this.value = value;
-                    OnChange(new PropertyChangedEventArgs(nameof(this.value)));
-                }
-            }
+            notifiableColl.Add(notifiableColl.Count + 1);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnChange(PropertyChangedEventArgs e)
+        public void AddValueNonNotify()
         {
-            PropertyChanged?.Invoke(this, e);
+            nonNotifiableColl.Add(nonNotifiableColl.Count + 1);
         }
     }
 }

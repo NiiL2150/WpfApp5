@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="200">
+        Title="MainWindow" Height="400" Width="400">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Width="150" VerticalAlignment="Center">
-            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label x:Name="NameLabel" Content="{Binding Name}"/>
-            <Label x:Name="PasswordLabel" Content="{Binding Password}"/>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <StackPanel Margin="5">
+                <ListBox Height="300" ItemsSource="{Binding NotifiableColl}"/>
+                <Button Margin="0,5,0,0" Content="Add value with notification" Click="ButtonNotify_Click"/>
+            </StackPanel>
+            <StackPanel Margin="5">
+                <ListBox Height="300" ItemsSource="{Binding NonNotifiableColl}"/>
+                <Button Margin="0,5,0,0" Content="Add value without notification" Click="ButtonNonNotify_Click"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
