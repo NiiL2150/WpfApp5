@@ -26,15 +26,5 @@ namespace WpfApp5
             InitializeComponent();
             DataContext = new DataSource();
         }
-
-        private void ButtonNotify_Click(object sender, RoutedEventArgs e)
-        {
-            ((DataSource)DataContext).AddValueNotify();
-        }
-
-        private void ButtonNonNotify_Click(object sender, RoutedEventArgs e)
-        {
-            ((DataSource)DataContext).AddValueNonNotify();
-        }
     }
 }

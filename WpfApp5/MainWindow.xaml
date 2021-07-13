@@ -7,15 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="400">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <StackPanel Margin="5">
-                <ListBox Height="300" ItemsSource="{Binding NotifiableColl}"/>
-                <Button Margin="0,5,0,0" Content="Add value with notification" Click="ButtonNotify_Click"/>
-            </StackPanel>
-            <StackPanel Margin="5">
-                <ListBox Height="300" ItemsSource="{Binding NonNotifiableColl}"/>
-                <Button Margin="0,5,0,0" Content="Add value without notification" Click="ButtonNonNotify_Click"/>
-            </StackPanel>
-        </StackPanel>
+        <ListBox Height="250" ItemsSource="{Binding Students}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>
+                            <Run Text="{Binding FullName, Mode=OneWay}"/>
+                            <Run Text="{Binding Age, Mode=OneWay}"/>
+                            <Run Text="{Binding Score, Mode=OneWay}"/>
+                        </TextBlock>
+                        <CheckBox IsChecked="{Binding IsStudy}" Content="Is studying"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

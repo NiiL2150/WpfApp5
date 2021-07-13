@@ -11,19 +11,15 @@ namespace WpfApp5
 {
     class DataSource
     {
-        ICollection<int> nonNotifiableColl = new List<int> { 1, 2, 3, 4 };
-        ICollection<int> notifiableColl = new ObservableCollection<int> { 1, 2, 3, 4 };
-
-        public IEnumerable<int> NonNotifiableColl => nonNotifiableColl;
-        public IEnumerable<int> NotifiableColl => notifiableColl;
-
-        public void AddValueNotify()
+        private IEnumerable<Student> students;
+        public DataSource()
         {
-            notifiableColl.Add(notifiableColl.Count + 1);
+            students = new List<Student> { new Student("Dmitry", 19, 11.9f),
+                new Student("Nail", 15, 12f, true),
+                new Student("Kanan", 18, 10.9f, true),
+                new Student("Javid", 17, 11f)
+            };
         }
-        public void AddValueNonNotify()
-        {
-            nonNotifiableColl.Add(nonNotifiableColl.Count + 1);
-        }
+        public IEnumerable<Student> Students => students;
     }
 }
