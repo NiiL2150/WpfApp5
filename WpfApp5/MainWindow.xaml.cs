@@ -21,36 +21,10 @@ namespace WpfApp5
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer timer;
         public MainWindow()
         {
             InitializeComponent();
-            timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(500) };
-            timer.Tick += TimerTick;
-            DataContext = new DataSource();
-        }
-
-        private void TimerTick(object sender, EventArgs e)
-        {
-            ((DataSource)DataContext).Value++;
-            UpdateUI();
-        }
-
-        private void UpdateUI()
-        {
-            tickLabel.Content = ((DataSource)DataContext).Value;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!timer.IsEnabled)
-            {
-                timer.Start();
-            }
-            else
-            {
-                timer.Stop();
-            }
+            DataContext = new User();
         }
     }
 }

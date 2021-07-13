@@ -5,18 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="120" Width="150">
+        Title="MainWindow" Height="200" Width="200">
     <Grid>
-        <StackPanel HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Step: "/>
-                <Label Content="{Binding Value}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Tick: "/>
-                <Label x:Name="tickLabel" Content="0"/>
-            </StackPanel>
-            <Button Content="Start timer" Click="Button_Click"/>
+        <StackPanel HorizontalAlignment="Center" Width="150" VerticalAlignment="Center">
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label x:Name="NameLabel" Content="{Binding Name}"/>
+            <Label x:Name="PasswordLabel" Content="{Binding Password}"/>
         </StackPanel>
     </Grid>
 </Window>
